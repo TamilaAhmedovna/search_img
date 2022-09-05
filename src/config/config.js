@@ -10,4 +10,4 @@ export const api = {
     }
 };
 
-export const interval = 2000
+export const interval = 1000

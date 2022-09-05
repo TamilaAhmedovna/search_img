@@ -1,16 +1,22 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import './images-list.css';
 
 const ImagesList = () => {
-  const images = useSelector(state => state.images)
+  const images = useSelector(state => state.images.imagesList)
 
   return (
     <div className="images-list">
-      {images.map(img => {
-        return <img src={img.urls.small} alt="Photo" key={img.id} />
-      })}
+      {images.length
+        ? images.map(img => {
+          return (
+            <div className="images-list-item" key={img.id}>
+              <img className="images-list-img" src={img.urls.small} alt="" />
+            </div>
+          )
+        })
+        : <div>...No images yet</div>
+      }
     </div>
   );
 }

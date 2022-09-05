@@ -1,11 +1,11 @@
-import { createSlice, current } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 export const imagesSlice = createSlice({
   name: 'images',
-  initialState: [],
+  initialState: {imagesList: []},
   reducers: {
     saveImages: (state, action) => {
-      state.push(...action.payload)
+      state.imagesList = [...action.payload]
     },
   },
 })

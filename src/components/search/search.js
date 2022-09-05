@@ -15,13 +15,16 @@ const Search = () => {
   const getImagesList = async val => {
     const images = await getImages(val)
 
-    dispatch(saveImages(images))
+      dispatch(saveImages(images))
   }
 
   const handleOnChange = val => {
     clearTimeout(timeoutId)
     setValue(val)
-    if (!val) return null;
+    if (!val) {
+      dispatch(saveImages([]))
+      return null;
+    }
     timeoutId = setTimeout(getImagesList, interval, val)
   }
 
