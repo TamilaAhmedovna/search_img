@@ -2,12 +2,28 @@ import axios from 'axios';
 
 import { api } from '../../config/config';
 
-const baseUrl = `${api.domen}/${api.searchPhotosUrl}`;
+const url = `${api.domen}/${api.searchPhotosUrl}`;
 
 const getImages = async (value) => {
-    const result = await axios.get(baseUrl);
+    try {
+        const result = await axios.get(
+            url,
+            {
+                params: { query: value },
+                headers: api.headers
+            }
+        );
 
-    return result.data;
+        return result.data.results
+            .map(i => {
+                return {
+                id: i.id,
+                urls: i.urls 
+            }
+        })
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 export default getImages;

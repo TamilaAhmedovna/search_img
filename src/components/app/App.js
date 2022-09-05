@@ -1,3 +1,4 @@
+import ImagesList from '../images-list/images-list';
 import Search from '../search/search';
 import './App.css';
 
@@ -8,7 +9,7 @@ function App() {
         <Search />
       </header>
       <section>
-
+        <ImagesList />        
       </section>
     </div>
   );
