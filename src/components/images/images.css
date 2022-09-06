@@ -1,10 +1,10 @@
-.images-list {
+.images {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.images-list-item {
+.images-item {
   margin: 10px;
   width: 200px;
   height: 200px;
@@ -14,7 +14,7 @@
   overflow: hidden;
 }
 
-.images-list-img {
+.images-img {
   width: 100%;
   height: auto;
 }

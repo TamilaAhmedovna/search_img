@@ -1,0 +1,8 @@
+.pagination {
+	margin: 10px;
+	cursor: pointer;
+}
+
+.pagination:hover {
+	color: cadetblue
+}

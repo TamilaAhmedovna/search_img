@@ -2,28 +2,31 @@ import axios from 'axios';
 
 import { api } from '../../config/config';
 
-const url = `${api.domen}/${api.searchPhotosUrl}`;
+const getImages = async (name, page) => {
+	try {
+		const { domen, searchImagesUrl, itemsPerPage, headers } = api
+		const url = `${domen}/${searchImagesUrl}`;
 
-const getImages = async (value) => {
-    try {
-        const result = await axios.get(
-            url,
-            {
-                params: { query: value },
-                headers: api.headers
-            }
-        );
+		const params = {
+			query: name,
+			page,
+			per_page: itemsPerPage
+		}
+		const result = await axios.get(
+			url,
+			{ params, headers }
+		);
 
-        return result.data.results
-            .map(i => {
-                return {
-                id: i.id,
-                urls: i.urls 
-            }
-        })
-    } catch (err) {
-        console.log(err)
-    }
+		return result.data.results
+			.map(i => {
+				return {
+					id: i.id,
+					urls: i.urls
+				}
+			})
+	} catch (err) {
+		throw err
+	}
 }
 
 export default getImages;
